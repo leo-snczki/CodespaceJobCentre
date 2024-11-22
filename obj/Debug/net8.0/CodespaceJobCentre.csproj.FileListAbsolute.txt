@@ -1,0 +1,15 @@
+/workspaces/CodespaceJobCentre/bin/Debug/net8.0/CodespaceJobCentre
+/workspaces/CodespaceJobCentre/bin/Debug/net8.0/CodespaceJobCentre.deps.json
+/workspaces/CodespaceJobCentre/bin/Debug/net8.0/CodespaceJobCentre.runtimeconfig.json
+/workspaces/CodespaceJobCentre/bin/Debug/net8.0/CodespaceJobCentre.dll
+/workspaces/CodespaceJobCentre/bin/Debug/net8.0/CodespaceJobCentre.pdb
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.AssemblyInfoInputs.cache
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.AssemblyInfo.cs
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.csproj.CoreCompileInputs.cache
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.sourcelink.json
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.dll
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/refint/CodespaceJobCentre.dll
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.pdb
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/CodespaceJobCentre.genruntimeconfig.cache
+/workspaces/CodespaceJobCentre/obj/Debug/net8.0/ref/CodespaceJobCentre.dll
