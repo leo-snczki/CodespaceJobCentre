@@ -19,7 +19,7 @@ public class Senha
         TipoServico = tipoServico;
         Atendida = false; // todas as senhas são dadas como "não atendidas" no começo.
     }
-    
+
     public override string ToString() => $"{Numero} ({TipoServico}) - {(Atendida ? "Atendida" : "Pendente")}";
 }
 
@@ -32,12 +32,12 @@ class Program
     }
     static void MostrarMenu()
     {
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1 - Atribuir senha");
-            Console.WriteLine("2 - Chamar próxima senha");
-            Console.WriteLine("3 - Consultar estatísticas");
-            Console.WriteLine("4 - Mostrar fila de senhas");
-            Console.WriteLine("5 - Sair");
-            Console.Write("Escolha uma opção: ");
+        Console.WriteLine("Menu:");
+        Console.WriteLine("1 - Atribuir senha");
+        Console.WriteLine("2 - Chamar próxima senha");
+        Console.WriteLine("3 - Consultar estatísticas");
+        Console.WriteLine("4 - Mostrar fila de senhas");
+        Console.WriteLine("5 - Sair");
+        Console.Write("Escolha uma opção: ");
     }
 }
