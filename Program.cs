@@ -40,4 +40,10 @@ class Program
         Console.WriteLine("5 - Sair");
         Console.Write("Escolha uma opção: ");
     }
+    static void LimparTela()
+    {
+        Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
+        Console.ReadKey();
+        Console.Clear();
+    }
 }
