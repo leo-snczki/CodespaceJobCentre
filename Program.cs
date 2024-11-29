@@ -29,16 +29,17 @@ class Program
     {
         Console.WriteLine("Hello, World!");
         Console.WriteLine("Bye, World!");
+        MostrarMenu();
     }
     static void MostrarMenu()
     {
-        Console.WriteLine("Menu:");
-        Console.WriteLine("1 - Atribuir senha");
-        Console.WriteLine("2 - Chamar próxima senha");
-        Console.WriteLine("3 - Consultar estatísticas");
-        Console.WriteLine("4 - Mostrar fila de senhas");
-        Console.WriteLine("5 - Sair");
-        Console.Write("Escolha uma opção: ");
+        Console.WriteLine($"{Cor.bold}Menu:{Cor.reset}");
+        Console.WriteLine($"{Cor.yellow}1{Cor.reset} - Atribuir senha");
+        Console.WriteLine($"{Cor.yellow}2{Cor.reset} - Chamar próxima senha");
+        Console.WriteLine($"{Cor.yellow}3{Cor.reset} - Consultar estatísticas");
+        Console.WriteLine($"{Cor.yellow}4{Cor.reset} - Mostrar fila de senhas");
+        Console.WriteLine($"{Cor.yellow}5{Cor.reset} - {Cor.red}Sair{Cor.reset}");
+        Console.Write($"{Cor.bold}Escolha uma opção:{Cor.reset}");
     }
     static void LimparTela()
     {
