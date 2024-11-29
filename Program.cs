@@ -2,10 +2,10 @@
 
 public class Cor // Variáveis estáticas públicas que server para dar cor a interface.
 {
-    public static string bold = "\x1b[1m";
-    public static string yellow = "\x1b[33m";
-    public static string red = "\x1b[31m";
-    public static string reset = "\x1b[0m"; // volta o texto ao normal.
+    public static string Bold => "\x1b[1m";
+    public static string Yellow => "\x1b[33m";
+    public static string Red => "\x1b[31m";
+    public static string Reset => "\x1b[0m"; // volta o texto ao normal.
 }
 public class Senha
 {
@@ -33,13 +33,13 @@ class Program
     }
     static void MostrarMenu()
     {
-        Console.WriteLine($"{Cor.bold}Menu:{Cor.reset}");
-        Console.WriteLine($"{Cor.yellow}1{Cor.reset} - Atribuir senha");
-        Console.WriteLine($"{Cor.yellow}2{Cor.reset} - Chamar próxima senha");
-        Console.WriteLine($"{Cor.yellow}3{Cor.reset} - Consultar estatísticas");
-        Console.WriteLine($"{Cor.yellow}4{Cor.reset} - Mostrar fila de senhas");
-        Console.WriteLine($"{Cor.yellow}5{Cor.reset} - {Cor.red}Sair{Cor.reset}");
-        Console.Write($"{Cor.bold}Escolha uma opção:{Cor.reset}");
+        Console.WriteLine($"{Cor.Bold}Menu:{Cor.Reset}");
+        Console.WriteLine($"{Cor.Yellow}1{Cor.Reset} - Atribuir senha");
+        Console.WriteLine($"{Cor.Yellow}2{Cor.Reset} - Chamar próxima senha");
+        Console.WriteLine($"{Cor.Yellow}3{Cor.Reset} - Consultar estatísticas");
+        Console.WriteLine($"{Cor.Yellow}4{Cor.Reset} - Mostrar fila de senhas");
+        Console.WriteLine($"{Cor.Yellow}5{Cor.Reset} - {Cor.Red}Sair{Cor.Reset}");
+        Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset}");
     }
     static void LimparTela()
     {
