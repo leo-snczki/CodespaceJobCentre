@@ -1,4 +1,11 @@
-﻿namespace CodespaceJobCentre;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
+
+namespace CodespaceJobCentre;
 
 public class Cor // Variáveis estáticas públicas que server para dar cor a interface.
 {
@@ -27,9 +34,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        Console.WriteLine("Bye, World!");
-        MostrarMenu();
+        bool continuar = true;
+        string op;
+        while (continuar)
+        {
+            MostrarMenu();
+            op = Console.ReadLine();
+            Console.Clear();
+            SelecionarOp(ref continuar, op);
+        }
+
     }
     static void MostrarMenu()
     {
@@ -39,12 +53,35 @@ class Program
         Console.WriteLine($"{Cor.Yellow}3{Cor.Reset} - Consultar estatísticas");
         Console.WriteLine($"{Cor.Yellow}4{Cor.Reset} - Mostrar fila de senhas");
         Console.WriteLine($"{Cor.Yellow}5{Cor.Reset} - {Cor.Red}Sair{Cor.Reset}");
-        Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset}");
+        Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset} ");
     }
     static void LimparTela()
     {
         Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
         Console.ReadKey();
         Console.Clear();
+    }
+
+    static void SelecionarOp(ref bool continuar, string op)
+    {
+        switch (op)
+        {
+            case "1":
+                break;
+            case "2":
+                break;
+            case "3":
+                break;
+            case "4":
+                break;
+            case "5":
+                // Vai mostrar stats antes de fechar e possibilidade de exportar para um txt.
+                continuar = false;
+                break;
+            default:
+                Console.WriteLine("\nOpção inválida. Tente novamente.");
+                break;
+        }
+        if (continuar) LimparTela();
     }
 }
