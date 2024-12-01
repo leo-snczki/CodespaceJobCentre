@@ -38,8 +38,8 @@ public class Gerenciador
 {
     private List<Senha> fila = new List<Senha>();
     // Contador para gerar números únicos para o tipo.
-    private int contadorSenhasI = 1; // Inscrição/Atualização de Dados.
-    private int contadorSenhasA = 1; // Apoio à Procura de Emprego.
+    private int contadorSenhasD = 1; // Inscrição/Atualização de Dados.
+    private int contadorSenhasE = 1; // Apoio à Procura de Emprego.
     private int contadorSenhasG = 1; // Informações Gerais.
 }
 class Program
