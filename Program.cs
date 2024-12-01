@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace CodespaceJobCentre;
-
+public enum TipoServico
+{
+    InscricaoAtualizacao = 1, 
+    ApoioProcuraEmprego,
+    InformacoesGerais 
+}
 public class Cor // Variáveis estáticas públicas que server para dar cor a interface.
 {
     public static string Bold => "\x1b[1m";
@@ -29,7 +34,14 @@ public class Senha
 
     public override string ToString() => $"{Numero} ({TipoServico}) - {(Atendida ? "Atendida" : "Pendente")}";
 }
-
+public class Gerenciador
+{
+    private List<Senha> fila = new List<Senha>();
+    // Contador para gerar números únicos para o tipo.
+    private int contadorSenhasI = 1; // Inscrição/Atualização de Dados.
+    private int contadorSenhasA = 1; // Apoio à Procura de Emprego.
+    private int contadorSenhasG = 1; // Informações Gerais.
+}
 class Program
 {
     static void Main(string[] args)
@@ -83,5 +95,13 @@ class Program
                 break;
         }
         if (continuar) LimparTela();
+    }
+    static void ExibirTiposServico()
+    {
+        Console.WriteLine("Escolha o tipo de serviço:");
+        Console.WriteLine($"{Cor.Yellow}1{Cor.Reset} - Inscrição/Atualização de Dados");
+        Console.WriteLine($"{Cor.Yellow}2{Cor.Reset} - Apoio à Procura de Emprego");
+        Console.WriteLine($"{Cor.Yellow}3{Cor.Reset} - Informações Gerais");
+        Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset} ");
     }
 }
