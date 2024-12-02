@@ -51,6 +51,7 @@ class Program
         while (continuar)
         {
             MostrarMenu1();
+            op="coisa";
             op = Console.ReadLine();
             Console.Clear();
             SelecionarOp(ref continuar, op);
