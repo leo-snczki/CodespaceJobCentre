@@ -54,6 +54,7 @@ class Program
             op = Console.ReadLine();
             Console.Clear();
             SelecionarOp(ref continuar, op);
+            System.Console.WriteLine("teste1");
         }
 
     }
