@@ -50,14 +50,14 @@ class Program
         string op;
         while (continuar)
         {
-            MostrarMenu();
+            MostrarMenu1();
             op = Console.ReadLine();
             Console.Clear();
             SelecionarOp(ref continuar, op);
         }
 
     }
-    static void MostrarMenu()
+    static void MostrarMenu1()
     {
         Console.WriteLine($"{Cor.Bold}Menu:{Cor.Reset}");
         Console.WriteLine($"{Cor.Yellow}1{Cor.Reset} - Atribuir senha");
@@ -65,6 +65,14 @@ class Program
         Console.WriteLine($"{Cor.Yellow}3{Cor.Reset} - Consultar estatísticas");
         Console.WriteLine($"{Cor.Yellow}4{Cor.Reset} - Mostrar fila de senhas");
         Console.WriteLine($"{Cor.Yellow}5{Cor.Reset} - {Cor.Red}Sair{Cor.Reset}");
+        Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset} ");
+    }
+        static void MostrarMenu2()
+    {
+        Console.WriteLine($"{Cor.Bold}Menu:{Cor.Reset}");
+        Console.WriteLine($"{Cor.Yellow}1{Cor.Reset} - Inscrição/Atualização de Dados");
+        Console.WriteLine($"{Cor.Yellow}2{Cor.Reset} - Apoio à Procura de Emprego");
+        Console.WriteLine($"{Cor.Yellow}3{Cor.Reset} - Informações Gerais");
         Console.Write($"{Cor.Bold}Escolha uma opção:{Cor.Reset} ");
     }
     static void LimparTela()
@@ -79,8 +87,10 @@ class Program
         switch (op)
         {
             case "1":
+            MostrarMenu2();
                 break;
             case "2":
+            MostrarMenu2();
                 break;
             case "3":
                 break;
