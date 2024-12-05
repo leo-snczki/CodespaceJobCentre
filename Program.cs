@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -202,7 +202,7 @@ class Program
     }
     static void MenuEscolha(ref bool continuar, GestorDeFilas gestorDeFilas)
     {
-        
+
         string op1;
         string op2;
         op1 = Console.ReadLine();
@@ -232,7 +232,7 @@ class Program
                         LimparTela();
                         break;
                     case "2":
-                    
+
                         gestorDeFilas.ExportarEstatisticas("estatisticas.txt");
                         LimparTela();
                         break;
@@ -244,7 +244,7 @@ class Program
                     case "0":
                         return;
                     default:
-                        Console.WriteLine("Opção indisponível");
+                        Console.WriteLine($"\n{Cor.Red}Opção indisponível{Cor.Reset}");
                         LimparTela();
                         break;
                 }
@@ -254,7 +254,7 @@ class Program
                 continuar = false;
                 break;
             default:
-                Console.WriteLine($"\n{Cor.Red}Opção inválida, tente novamente.{Cor.Reset}");
+                Console.WriteLine($"\n{Cor.Red}Opção indisponível{Cor.Reset}");
                 LimparTela();
                 break;
         }
@@ -277,4 +277,3 @@ class Program
         Console.Write($"{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
     }
 }
-
