@@ -53,8 +53,9 @@ public class Servico
         contadorSenhas++;
         numeroSenha = $"{Prefixo}{contadorSenhas:D3}";
         var senha = new Senha(numeroSenha, Nome);
+        Console.Clear();
         fila.Enqueue(senha);
-        Console.WriteLine($"{Cor.Yellow}Senha atribuída: {senha.Numero} - {Nome}{Cor.Reset}");
+        Console.WriteLine($"\n{Cor.Yellow}Senha atribuída: {Cor.Bold}{senha.Numero} - {Nome}{Cor.Reset}");
     }
 
     public Senha ChamarProximaSenha()
@@ -131,7 +132,8 @@ public class GestorDeFilas
             Senha senha = servicos[escolha].ChamarProximaSenha();
             if (senha != null)
             {
-                Console.WriteLine($"{Cor.Green}Atendendo: {senha.Numero} - {senha.TipoServico}{Cor.Reset}");
+                Console.Clear();
+                Console.WriteLine($"\n{Cor.Green}Atendido: {senha.Numero} - {senha.TipoServico}{Cor.Reset}");
             }
             else
             {
@@ -294,7 +296,7 @@ class Program
         }
         if (string.IsNullOrWhiteSpace(nomeArquivo))
         {
-            nomeArquivo = DateTime.Now.ToString("dd.MM.yyyy H-mm");
+            nomeArquivo = DateTime.Now.ToString("dd.MM.yyyy_H:mm");
         }
         gestorDeFilas.ExportarEstatisticas(nomeArquivo + ".txt");
     }
