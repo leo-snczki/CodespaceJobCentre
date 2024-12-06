@@ -256,6 +256,7 @@ public class GestorDeFilas
 
             File.WriteAllLines(caminhoArquivo, linhas); // Escreve as linhas no arquivo estabelecido.
             Console.WriteLine($"{Interface.Green}Estatísticas exportadas para {caminhoArquivo}{Interface.Reset}"); // Confirmação doa exportação.
+
         }
         catch (Exception ex)
         {
@@ -275,7 +276,7 @@ public class GestorDeFilas
 
         if (string.IsNullOrWhiteSpace(nomeArquivo)) // se for null ou algum espaço atoa, vai dar o nome do arquivo com a data.
         {
-            nomeArquivo = DateTime.Now.ToString("dd.MM.yyyy_H:mm");
+            nomeArquivo = DateTime.Now.ToString("dd-MM-yyyy_H-mm");
         }
         ExportarEstatisticas(nomeArquivo + ".txt"); // Exporta as estatísticas com o nome do arquivo mais .txt.
     }
