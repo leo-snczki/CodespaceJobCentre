@@ -39,6 +39,8 @@ public class Servico
     public string Nome { get; set; }
     public string Prefixo { get; set; }
     private Queue<Senha> fila = new Queue<Senha>();
+
+     private List<Senha> filaSenhasAtendidas = new List<Senha>();
     private int contadorSenhas = 0;
 
     public Servico(string nome, string prefixo)
@@ -58,32 +60,37 @@ public class Servico
         Console.WriteLine($"\n{Cor.Yellow}Senha atribuída: {Cor.Bold}{senha.Numero} - {Nome}{Cor.Reset}");
     }
 
-    public Senha ChamarProximaSenha()
+public Senha ChamarProximaSenha()
+{
+    if (fila.Count > 0)
     {
-        if (fila.Count > 0)
-        {
-            Senha senha = fila.Dequeue();
-            senha.Atender();
-            return senha;
-        }
-        return null;
+        Senha senha = fila.Dequeue();
+        senha.Atender();
+        filaSenhasAtendidas.Add(senha);
+        return senha;
     }
-
+    return null;
+}
     public int SenhasPendentes() => fila.Count;
 
 
-    public int SenhasAtendidas() => fila.Count(s => s.Atendida);
-
+    public int SenhasAtendidas() => filaSenhasAtendidas.Count;
 
     public string UltimaSenhaAtendida()
-    {
-        foreach (var senha in fila)
-        {
-            if (senha.Atendida)
-                return senha.Numero;
-        }
-        return "Nenhuma";
-    }
+{
+    if (filaSenhasAtendidas.Count > 0)
+        return filaSenhasAtendidas.Last().Numero;
+    return "Nenhuma";
+}
+    
+
+    public string UltimaSenha()
+{
+    if (fila.Count > 0)
+        return fila.Last().Numero;
+    return "Nenhuma";
+}
+
 
     public void ExibirSenha()
     {
@@ -149,7 +156,7 @@ public class GestorDeFilas
             Console.WriteLine($"{Cor.Yellow}{i + 1}.{Cor.Reset} {servicos[i].Nome}");
         }
         Console.WriteLine($"{Cor.Red}0. Sair{Cor.Reset}");
-        Console.Write($"{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
+        Console.Write($"\n{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
     }
 
     public void ConsultarEstatisticas()
@@ -161,6 +168,7 @@ public class GestorDeFilas
             Console.WriteLine($"{Cor.Bold}{servico.Nome}:{Cor.Reset}");
             Console.WriteLine($"- Senhas atendidas: {servico.SenhasAtendidas()}");
             Console.WriteLine($"- Senhas pendentes: {servico.SenhasPendentes()}");
+            Console.WriteLine($"- Última senha solicitada: {servico.UltimaSenha()}");
             Console.WriteLine($"- Última senha atendida: {servico.UltimaSenhaAtendida()}\n");
         }
     }
@@ -175,6 +183,7 @@ public class GestorDeFilas
                 linhas.Add($"Serviço: {servico.Nome}");
                 linhas.Add($"Senhas atendidas: {servico.SenhasAtendidas()}");
                 linhas.Add($"Senhas pendentes: {servico.SenhasPendentes()}");
+                linhas.Add($"Última senha: {servico.UltimaSenha()}");
                 linhas.Add($"Última senha atendida: {servico.UltimaSenhaAtendida()}\n");
             }
 
@@ -189,7 +198,7 @@ public class GestorDeFilas
     public void ExibirFila()
     {
         Console.Clear();
-        Console.WriteLine($"\n{Cor.Bold}--- Fila Completa ---{Cor.Reset}\n");
+        Console.WriteLine($"\n{Cor.Bold}--- Fila Completa ---{Cor.Reset}");
 
         foreach (var servico in servicos)
         {
@@ -240,7 +249,7 @@ class Program
                 Console.WriteLine($"{Cor.Yellow}2.{Cor.Reset} Exportar");
                 Console.WriteLine($"{Cor.Yellow}3.{Cor.Reset} Consultar e Exportar");
                 Console.WriteLine($"{Cor.Red}0. Sair{Cor.Reset}");
-                Console.Write($"{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
+                Console.Write($"\n{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
                 op2 = Console.ReadLine();
                 switch (op2)
                 {
@@ -316,6 +325,6 @@ class Program
         Console.WriteLine($"{Cor.Yellow}4.{Cor.Reset} Exibir fila");
         Console.WriteLine($"{Cor.Red}0.{Cor.Reset} {Cor.Red}Sair{Cor.Reset}");
         Console.WriteLine($"{Cor.Red}{Cor.Bold}X. Sair sem backup{Cor.Reset}");
-        Console.Write($"{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
+        Console.Write($"{Cor.Bold}\nEscolha uma opção: {Cor.Reset} ");
     }
 }
