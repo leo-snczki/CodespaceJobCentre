@@ -84,9 +84,8 @@ public class Servico
         return "Nenhuma";
     }
 
-    public void ExibirFila()
+    public void ExibirSenha()
     {
-        Console.WriteLine($"Fila de {Nome}:");
         foreach (var senha in fila)
         {
             Console.WriteLine($"- {senha.Numero} ({(senha.Atendida ? "Atendida" : "Pendente")})");
@@ -185,6 +184,21 @@ public class GestorDeFilas
             Console.WriteLine($"{Cor.Red}Erro ao exportar estatísticas: {ex.Message}{Cor.Reset}");
         }
     }
+    public void ExibirFila()
+    {
+        Console.Clear();
+        Console.WriteLine($"\n{Cor.Bold}--- Fila Completa ---{Cor.Reset}\n");
+
+        foreach (var servico in servicos)
+        {
+            // Exibir as senhas de cada serviço
+            Console.WriteLine($"\n{Cor.Bold}{servico.Nome}:{Cor.Reset}");
+            servico.ExibirSenha();
+        }
+
+        Console.WriteLine("\nPressione qualquer tecla para continuar...");
+        Console.ReadKey();
+    }
 }
 
 class Program
@@ -197,14 +211,15 @@ class Program
         while (continuar)
         {
             MostrarMenuPrincipal();
-            MenuEscolha(ref continuar, gestorDeFilas);
+            MenuEscolha(ref continuar, ref gestorDeFilas);
         }
     }
-    static void MenuEscolha(ref bool continuar, GestorDeFilas gestorDeFilas)
+    static void MenuEscolha(ref bool continuar,ref GestorDeFilas gestorDeFilas)
     {
 
         string op1;
         string op2;
+        DateTime currentDate = DateTime.Now;
         op1 = Console.ReadLine();
         switch (op1)
         {
@@ -232,12 +247,11 @@ class Program
                         LimparTela();
                         break;
                     case "2":
-
-                        gestorDeFilas.ExportarEstatisticas("estatisticas.txt");
+                        ExportadorNome(gestorDeFilas);
                         LimparTela();
                         break;
                     case "3":
-                        gestorDeFilas.ExportarEstatisticas("estatisticas.txt");
+                        ExportadorNome(gestorDeFilas);
                         gestorDeFilas.ConsultarEstatisticas();
                         LimparTela();
                         break;
@@ -249,8 +263,14 @@ class Program
                         break;
                 }
                 break;
+            case "4":
+                gestorDeFilas.ExibirFila();
+                break;
             case "0":
-                gestorDeFilas.ExportarEstatisticas("estatisticas.txt");
+                gestorDeFilas.ExportarEstatisticas("estatisticas-backup.txt");
+                continuar = false;
+                break;
+            case "X":
                 continuar = false;
                 break;
             default:
@@ -259,6 +279,24 @@ class Program
                 break;
         }
         if (continuar) Console.Clear();
+    }
+    static void ExportadorNome(GestorDeFilas gestorDeFilas)
+    {
+        string nomeArquivo;
+        Console.Clear();
+        Console.WriteLine($"{Cor.Bold}0....{Cor.Reset} para voltar ao menu");
+        Console.WriteLine($"{Cor.Bold}null.{Cor.Reset} para data atual");
+        Console.Write($"\n{Cor.Bold}Digite o nome do arquivo para exportar as estatísticas: {Cor.Reset}");
+        nomeArquivo = Console.ReadLine();
+        if (nomeArquivo == "0")
+        {
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(nomeArquivo))
+        {
+            nomeArquivo = DateTime.Now.ToString("dd.MM.yyyy H-mm");
+        }
+        gestorDeFilas.ExportarEstatisticas(nomeArquivo + ".txt");
     }
     static void LimparTela()
     {
@@ -273,7 +311,9 @@ class Program
         Console.WriteLine($"{Cor.Yellow}1.{Cor.Reset} Atribuir senha");
         Console.WriteLine($"{Cor.Yellow}2.{Cor.Reset} Chamar próxima senha");
         Console.WriteLine($"{Cor.Yellow}3.{Cor.Reset} Consultar estatísticas");
+        Console.WriteLine($"{Cor.Yellow}4.{Cor.Reset} Exibir fila");
         Console.WriteLine($"{Cor.Red}0.{Cor.Reset} {Cor.Red}Sair{Cor.Reset}");
+        Console.WriteLine($"{Cor.Red}{Cor.Bold}X. Sair sem backup{Cor.Reset}");
         Console.Write($"{Cor.Bold}Escolha uma opção: {Cor.Reset} ");
     }
 }
