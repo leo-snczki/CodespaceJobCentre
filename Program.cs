@@ -210,13 +210,13 @@ public class GestorDeFilas
                 ultimaSenhaAtendida = tipoServico.UltimaSenhaAtendida();
         }
 
-        Console.WriteLine("\n--- Estatísticas Gerais ---\n"); // Demonstra as estatísticas gerais.
+        Console.WriteLine($"\n{Interface.Bold}--- Estatísticas Gerais ---{Interface.Reset}\n"); // Demonstra as estatísticas gerais.
         Console.WriteLine($"Total de senhas pendentes: {totalPendentes}");
         Console.WriteLine($"Total de senhas atendidas: {totalAtendidas}");
         Console.WriteLine($"Última senha pendente: {ultimaSenhaPendente}");
         Console.WriteLine($"Última senha atendida: {ultimaSenhaAtendida}\n");
     }
-    
+
     public void MostrarMenuTerciário()
     {
         Console.WriteLine($"\n{Interface.Bold}--- Estatísticas ---{Interface.Reset}\n");
@@ -247,7 +247,7 @@ public class GestorDeFilas
                 totalAtendidas += tipoServico.QuantidadeSenhasAtendidas();
             }
 
-            linhas.Add($"\n{Interface.Bold}--- Estatísticas Gerais ---{Interface.Reset}\n"); // Demonstra as estatísticas gerais.
+            linhas.Add("\n--- Estatísticas Gerais ---\n"); // Demonstra as estatísticas gerais.
             linhas.Add($"Total de senhas pendentes: {totalPendentes}"); // Mostra o total de senhas pendentes no final da execução do programa.
             linhas.Add($"Total de senhas atendidas: {totalAtendidas}"); // Mostra o total de senhas atendidas no final da execução do programa.
             linhas.Add($"Última senha pendente: {ultimaSenhaPendente}");
@@ -355,14 +355,22 @@ class Program
                 gestor.ExibirFila();
                 break;
             case "0": // Sai do programa COM backup das estatísticas.
-                gestor.ExportarEstatisticas("estatisticas-backup.txt");
-                continuar = false;
+                Console.Clear();
+                Console.WriteLine($"\n{Interface.Bold}--- Saída ---");
+                Console.WriteLine($"\n1{Interface.Reset} - Finaliza {Interface.Green}com backup{Interface.Reset}\n{Interface.Bold}Qualquer outra tecla{Interface.Reset} - volta ao menu");
+                Console.Write($"\n{Interface.Bold}{Interface.Yellow}Confirmação de saída: {Interface.Reset}");
+                op2 = Console.ReadLine();
+                if (op2 == "1")
+                { 
+                    continuar = false;
+                    gestor.ExportarEstatisticas("estatisticas-backup.txt");
+                }
                 break;
             case "X": // Sai do programa SEM backup das estatísticas.
                 Console.Clear();
                 Console.WriteLine($"\n{Interface.Bold}--- Saída ---");
-                Console.WriteLine($"\n1{Interface.Reset} - Finaliza\n{Interface.Bold}Qualquer outra tecla{Interface.Reset} - volta ao menu");
-                Console.Write($"\n{Interface.Bold}{Interface.Yellow}Confirmação de saída {Interface.Red}sem backup: {Interface.Reset}");
+                Console.WriteLine($"\n1{Interface.Reset} - Finaliza {Interface.Red}sem backup{Interface.Reset}\n{Interface.Bold}Qualquer outra tecla{Interface.Reset} - volta ao menu");
+                Console.Write($"\n{Interface.Bold}{Interface.Yellow}Confirmação de saída: {Interface.Reset}");
                 op2 = Console.ReadLine();
                 if (op2 == "1") continuar = false;
                 break;
