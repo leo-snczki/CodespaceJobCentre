@@ -210,7 +210,7 @@ public class GestorDeFilas
                 ultimaSenhaAtendida = tipoServico.UltimaSenhaAtendida();
         }
 
-        Console.WriteLine($"\n{Interface.Bold}--- Estatísticas Gerais ---{Interface.Reset}\n"); // Demonstra as estatísticas gerais.
+        Console.WriteLine("\n--- Estatísticas Gerais ---\n"); // Demonstra as estatísticas gerais.
         Console.WriteLine($"Total de senhas pendentes: {totalPendentes}");
         Console.WriteLine($"Total de senhas atendidas: {totalAtendidas}");
         Console.WriteLine($"Última senha pendente: {ultimaSenhaPendente}");
@@ -359,7 +359,12 @@ class Program
                 continuar = false;
                 break;
             case "X": // Sai do programa SEM backup das estatísticas.
-                continuar = false;
+                Console.Clear();
+                Console.WriteLine($"\n{Interface.Bold}--- Saída ---");
+                Console.WriteLine($"\n1{Interface.Reset} - Finaliza\n{Interface.Bold}Qualquer outra tecla{Interface.Reset} - volta ao menu");
+                Console.Write($"\n{Interface.Bold}{Interface.Yellow}Confirmação de saída {Interface.Red}sem backup: {Interface.Reset}");
+                op2 = Console.ReadLine();
+                if (op2 == "1") continuar = false;
                 break;
             default:
                 Console.Clear();
